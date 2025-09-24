@@ -19,7 +19,14 @@ public class StaminaSystem
         subeStamina = sube;
     }
 
+    //Interfaz de la camara
+    //Con esta interfaz, el jugador depende de esta y no de un metodo en concreto
+    public interface ICameraController
+    {
+        void Look(Transform playerTransform, Camera playerCamera);
+    }
 
+    //Movimiento con mouse
 
     //Movimiento inicial
     public class movimiento : MonoBehaviour
