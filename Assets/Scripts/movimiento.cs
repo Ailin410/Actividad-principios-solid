@@ -26,7 +26,30 @@ public class StaminaSystem
         void Look(Transform playerTransform, Camera playerCamera);
     }
 
-    //Movimiento con mouse
+    //Movimiento de la camara con mouse
+    //Con esta clase, solo se encarga del movimiento de la camara con el mouse
+
+    public class MouseCameraController : ICameraController
+    {
+        private float sensitivity;
+        private float xRotation = 0f;
+
+        public MouseCameraController(float sensitivity)
+        {
+            this.sensitivity = sensitivity;
+        }
+
+        public void Look(Transform playerTransform, Camera playerCamera)
+        {
+            Vector2 mouseDelta = Mouse.current.delta.ReadValue() * sensitivity;
+
+            xRotation -= mouseDelta.y;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            playerTransform.Rotate(Vector3.up * mouseDelta.x);
+        }
+    }
+
 
     //Movimiento inicial
     public class movimiento : MonoBehaviour
