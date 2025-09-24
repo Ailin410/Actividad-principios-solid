@@ -17,23 +17,25 @@ public class StaminaSystem
         stamina = max;
         bajaStamina = baja;
         subeStamina = sube;
+    }
 
-        public float CurrentStamina => stamina; //Devuelve cuanta estamina tiene
-        public bool HasStamina => stamina > 0f; //Devuelve verdadero si hay estamina, sino devuelve falso
+    public float CurrentStamina => stamina; //Devuelve cuanta estamina tiene
+    public bool HasStamina => stamina > 0f; //Devuelve verdadero si hay estamina, sino devuelve falso
 
-        public void Baja(float deltaTime)
-        {
-             //Resta estamina y si baja de cero lo corrigue y lo deja en 0
-            stamina -= bajaStamina * deltaTime;
-            if (stamina < 0f) stamina = 0f;
-        }
+    public void Baja(float deltaTime)
+    {
+      //Resta estamina y si baja de cero lo corrigue y lo deja en 0
+      stamina -= bajaStamina * deltaTime;
+      if (stamina < 0f) stamina = 0f;
 
-        public void Sube(float deltaTime)
-        {
-            //Suma estamina y cuando supera el maximo se corrigue y lo deja en el valor maximo
-            stamina += subeStamina * deltaTime;
-            if (stamina > maxStamina) stamina = maxStamina;
-        }
+    }
+
+   public void Sube(float deltaTime)
+   {
+    //Suma estamina y cuando supera el maximo se corrigue y lo deja en el valor maximo
+      stamina += subeStamina * deltaTime;
+      if (stamina > maxStamina) stamina = maxStamina;
+   }
 
 }
 
